@@ -174,19 +174,27 @@ ThievingNpcStrategy getActiveStrategy() {
                 if (customFilter != null) return customFilter;
             }
             switch (finalNpc) {
-                case VYRES:
-                    filter = validateName(ThievingData.VYRES::contains);
-                    break;
-                case ARDOUGNE_KNIGHT:
-                    filter = validateName("knight of ardougne"::equalsIgnoreCase);
-                    if (config.ardougneAreaCheck()) filter = filter.and(npc -> ThievingData.ARDOUGNE_AREA.contains(npc.getWorldLocation()));
-                    break;
-                case ELVES:
-                    filter = validateName(ThievingData.ELVES::contains);
-                    break;
-                default:
-                    filter = validateName(name -> name.toLowerCase().contains(finalNpc.getName()));
-                    break;
+            case VYRES:
+                filter = validateName(ThievingData.VYRES::contains);
+                break;
+            case ARDOUGNE_KNIGHT:
+                filter = validateName("knight of ardougne"::equalsIgnoreCase);
+                if (config.ardougneAreaCheck()) {
+                    filter = filter.and(npc -> ThievingData.ARDOUGNE_AREA.contains(npc.getWorldLocation()));
+                }
+                break;
+            case ELVES:
+                filter = validateName(ThievingData.ELVES::contains);
+                break;
+            case GNOME:
+                filter = validateName(name ->
+                    name.equalsIgnoreCase("Gnome")
+                        || name.equalsIgnoreCase("gnome woman")
+                );
+                break;
+            default:
+                filter = validateName(name -> name.toLowerCase().contains(finalNpc.getName()));
+                break;
             }
         }
         return filter;
