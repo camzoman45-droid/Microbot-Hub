@@ -13,6 +13,7 @@ public enum ThievingNpc {
 	WARRIOR("warrior", 25),
 	ROGUE("rogue", 32),
 	MASTER_FARMER("master farmer", 38),
+	GNOME("gnome", 1),
 	GUARD("guard", 40),
 	WEALTHY_CITIZEN("Wealthy citizen", 50),
 	ARDOUGNE_KNIGHT("knight of ardougne", 55),
